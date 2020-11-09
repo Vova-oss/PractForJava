@@ -15,16 +15,17 @@ public class Main {
         boolean flag = true;
 
         while (true){
-            System.out.println("[1] - Заменить все пробелы на знак '#' [2] - Узнать самое часто повторяющееся слово [0] - Завершить программу");
+            System.out.println("[1] - Узнать самое часто повторяющееся слово [2] - Заменить все пробелы на знак '#' [0] - Завершить программу");
             int choose = sc.nextInt();
             switch (choose){
                 case 1:
-
-                    break;
-                case 2:
                     dictionary = new HashMap<>();
                     work_with_output_file();
                     output_result();
+                    break;
+                case 2:
+                    work_with_file(false, "","dop.txt");
+                    replacement();
                     break;
                 case 0:
                     return;
@@ -32,8 +33,48 @@ public class Main {
         }
     }
 
-    public static void work_with_file(boolean append, String text){
-        try(FileWriter writer = new FileWriter("notes.txt", append))
+    public static void replacement(){
+        try {
+            File file = new File("wap.txt");
+            //создаем объект FileReader для объекта File
+            FileReader fr = new FileReader(file);
+            //создаем BufferedReader с существующего FileReader для построчного считывания
+            BufferedReader reader = new BufferedReader(fr);
+            // считаем сначала первую строку
+            String line = reader.readLine();
+            while (line != null) {
+                line = line.replace(' ','#');
+                work_with_file(true,line,"dop.txt");
+                line = reader.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        work_with_file(false,"","wap.txt");
+
+        try {
+            File file = new File("dop.txt");
+            //создаем объект FileReader для объекта File
+            FileReader fr = new FileReader(file);
+            //создаем BufferedReader с существующего FileReader для построчного считывания
+            BufferedReader reader = new BufferedReader(fr);
+            // считаем сначала первую строку
+            String line = reader.readLine();
+            while (line != null) {
+                work_with_file(true,line,"wap.txt");
+                line = reader.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Замена прошла успешно");
+
+    }
+
+    public static void work_with_file(boolean append, String text, String name){
+        try(FileWriter writer = new FileWriter(name, append))
         {
             writer.write(text);
             writer.write('\n');
