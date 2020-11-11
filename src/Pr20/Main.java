@@ -6,13 +6,10 @@ import java.util.*;
 public class Main {
 
     static Map <String, Integer> dictionary;
-    static Stack<String> keyList = new Stack<>();
 
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        String text;
-        boolean flag = true;
 
         while (true){
             System.out.println("[1] - Узнать самое часто повторяющееся слово [2] - Заменить все пробелы на знак '#' [0] - Завершить программу");
@@ -35,7 +32,7 @@ public class Main {
 
     public static void replacement(){
         try {
-            File file = new File("wap.txt");
+            File file = new File("voyna-i-mir-tom-1.txt");
             //создаем объект FileReader для объекта File
             FileReader fr = new FileReader(file);
             //создаем BufferedReader с существующего FileReader для построчного считывания
@@ -51,7 +48,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        work_with_file(false,"","wap.txt");
+        work_with_file(false,"","voyna-i-mir-tom-1.txt");
 
         try {
             File file = new File("dop.txt");
@@ -62,7 +59,7 @@ public class Main {
             // считаем сначала первую строку
             String line = reader.readLine();
             while (line != null) {
-                work_with_file(true,line,"wap.txt");
+                work_with_file(true,line,"voyna-i-mir-tom-1.txt");
                 line = reader.readLine();
             }
         } catch (IOException e) {
@@ -86,7 +83,7 @@ public class Main {
 
     public static void work_with_output_file(){
         try {
-            File file = new File("wap.txt");
+            File file = new File("voyna-i-mir-tom-1.txt");
             //создаем объект FileReader для объекта File
             FileReader fr = new FileReader(file);
             //создаем BufferedReader с существующего FileReader для построчного считывания
@@ -107,7 +104,6 @@ public class Main {
                         //System.out.print(subStr[i]);
                         //System.out.println(dictionary.get(subStr[i]));
 
-                        keyList.push(subStr[i]);
                     }
                 }
                 line = reader.readLine();
@@ -118,28 +114,48 @@ public class Main {
     }
 
     public static void output_result(){
-        int max = 0;
-        String word = "";
+
+        Map <Integer, String> dwas = new HashMap<>();
+        int sizeList = 0;
+        System.out.println("Топ 10 самых часто встречающихся слов.");
+
+        for(int j =0;j<10;j++) {
 
 
-
-        String allKeys = dictionary.keySet().toString();
-        allKeys = allKeys.substring(1,allKeys.length()-1);
-        String [] massKeys = allKeys.split(", ");
+            int max = 0;
+            String word = "";
 
 
+            String allKeys = dictionary.keySet().toString();
+            allKeys = allKeys.substring(1, allKeys.length() - 1);
+            String[] massKeys = allKeys.split(", ");
 
-        for (int i =0;i<massKeys.length;i++){
-            //System.out.println(massKeys[i]);
-            if(dictionary.get(massKeys[i]) > max){
-                word = massKeys[i];
-                max = dictionary.get(massKeys[i]);
-            }else dictionary.get(massKeys[i]);
 
-            //System.out.println();
+            for (int i = 0; i < massKeys.length; i++) {
+                //System.out.println(massKeys[i]);
+
+                boolean flag = true;
+                for(int k =0;k< dwas.size();k++){
+                    if(massKeys[i].equals(dwas.get(k+1))){
+                        flag = false;
+                    }
+                }
+
+                if (dictionary.get(massKeys[i]) > max && flag && !massKeys[i].equals("-")) {
+                    word = massKeys[i];
+                    max = dictionary.get(massKeys[i]);
+                } else dictionary.get(massKeys[i]);
+
+                //System.out.println();
+            }
+            System.out.println(j+1+"ое слово: \"" + word + "\"");
+            System.out.println("Оно стретилось " + max + " раз");
+
+            sizeList++;
+            dwas.put(sizeList,word);
+
         }
-        System.out.println("Самое часто встречающееся слово это \"" +  word +"\"");
-        System.out.println("Оно стретилось " +  max+ " раз");
+
     }
 
 }
