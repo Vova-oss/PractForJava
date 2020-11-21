@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/Pr13/Main.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Pr13/SortingStudensByGPA.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Pr13/Student.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/Pr20/Main.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/Pr21/Main.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Pr22/part1/Abibas.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Pr22/part1/Abibas.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Pr22/part1/Client.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Pr22/part1/Client.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Pr22/part1/Main.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Pr22/part1/Main.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Pr22/part2/Main.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Pr22/part2/SortingStudensByGPA.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Pr22/part2/Student.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/Pr7/Main.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/voyna-i-mir-tom-1 — копия.txt" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/voyna-i-mir-tom-1.txt" charset="windows-1251" />
